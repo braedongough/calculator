@@ -37,5 +37,5 @@ export default App;
 todo: 
   - Add updated state so that operator isn't shown in display but is still used to make calculation similar to how the apple calc works. 
   - add limit so that you can't input over 12 digits - make it flash red when limit is reached. 
-  - Center calculator in the middle of the page, check markdown previewer on how-to.
+  - Center calculator in the middle of the page, check markdown previewer on how-to.   .
 */
