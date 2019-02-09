@@ -10,12 +10,10 @@ export const Display = styled.div`
   height: 85px;
   display: absolute;
   text-align: right;
-  justify-content: center;
-  align-items: center;
+  vertical-align: baseline;
   padding: 0px 15px;
-  padding-top: 25px;
   overflow: scroll;
-  font-size: 45px;
+  font-size: ${props => props.fontSize + "px"};
   font-weight: 200;
   span.flash {
     animation: flash linear 0.05s 1;

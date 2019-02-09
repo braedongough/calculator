@@ -5,14 +5,27 @@ import { Display } from "../Display/Display";
 import { CalculatorContainer } from "../Containers/Containers";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.Display = React.createRef();
+  }
   state = {
     result: "",
     operator: "",
     operand: "",
     startCaptureSecondNumber: false,
     flashOperand: "",
+    fontSize: 45,
   };
 
+  componentWillUpdate() {
+    console.log("updating", this.checkOverflow());
+    if (this.checkOverflow()) {
+      return this.setState(prevState => ({
+        fontSize: (prevState.fontSize -= 5),
+      }));
+    }
+  }
   handleNumber = ({ target }) => {
     const value = target.getAttribute("value");
     if (this.state.startCaptureSecondNumber) {
@@ -72,12 +85,15 @@ class App extends Component {
       operand: "",
     });
   };
+  checkOverflow() {
+    return this.Display.current.scrollWidth > this.Display.current.clientWidth;
+  }
 
   render() {
-    const { flashOperand, result } = this.state;
+    const { flashOperand, result, fontSize } = this.state;
     return (
       <CalculatorContainer>
-        <Display>
+        <Display ref={this.Display} fontSize={fontSize}>
           <span className={flashOperand}>{result || 0}</span>
         </Display>
         <Buttons
@@ -101,7 +117,7 @@ todo:
 ?function isOverflown(element) {
 ?    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 } 
-todo:
--fix focus highlight when button clicked
+ currently the app won't resize the text if input is cleared or if the number computed is of a value that could be fit in the text area. 
+ Also, need to figure out how to push the text down to the bottom of the element without forcing it with margin. 
 
 */
