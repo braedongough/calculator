@@ -12,7 +12,7 @@ const Buttons = ({
   operate,
 }) => (
   <ButtonContainer>
-    <Button value={"C"} onClick={clear} className={"altButton"}>
+    <Button value={"C"} onClick={clear} className={"altButton leftSide"}>
       C
     </Button>
     <Button onClick={handleSignChange} className={"altButton"}>
@@ -24,7 +24,7 @@ const Buttons = ({
     <Button value={"/"} onClick={handleOperator} className={"operatorButton"}>
       ÷
     </Button>
-    <Button value={7} onClick={handleNumber}>
+    <Button value={7} onClick={handleNumber} className={"leftSide"}>
       7
     </Button>
     <Button value={8} onClick={handleNumber}>
@@ -36,7 +36,7 @@ const Buttons = ({
     <Button value={"*"} onClick={handleOperator} className={"operatorButton"}>
       x
     </Button>
-    <Button value={4} onClick={handleNumber}>
+    <Button value={4} onClick={handleNumber} className={"leftSide"}>
       4
     </Button>
     <Button value={5} onClick={handleNumber}>
@@ -48,7 +48,7 @@ const Buttons = ({
     <Button value={"-"} onClick={handleOperator} className={"operatorButton"}>
       -
     </Button>
-    <Button value={1} onClick={handleNumber}>
+    <Button value={1} onClick={handleNumber} className={"leftSide"}>
       1
     </Button>
     <Button value={2} onClick={handleNumber}>
@@ -61,13 +61,21 @@ const Buttons = ({
     <Button value={"+"} onClick={handleOperator} className={"operatorButton"}>
       +
     </Button>
-    <Button value={0} onClick={handleNumber} className={"zero"}>
+    <Button
+      value={0}
+      onClick={handleNumber}
+      className={"zero leftSide bottom borderRadiusBottomLeft"}
+    >
       0
     </Button>
-    <Button value={"."} onClick={handleDecimal}>
+    <Button value={"."} onClick={handleDecimal} className={"bottom"}>
       .
     </Button>
-    <Button value={"="} onClick={operate} className={"operatorButton"}>
+    <Button
+      value={"="}
+      onClick={operate}
+      className={"operatorButton bottom borderRadiusBottomRight"}
+    >
       =
     </Button>
   </ButtonContainer>

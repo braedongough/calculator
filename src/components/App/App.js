@@ -97,11 +97,11 @@ export default App;
 
 /* 
 todo: 
-- change borders to black
-todo: 
--update favicon
-todo: 
--format text so overflow is accounted for.
+-format text so overflow is accounted for. Use componentWillUpdate lifecycle method and: 
+?function isOverflown(element) {
+?    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+} 
 todo:
 -fix focus highlight when button clicked
+
 */
