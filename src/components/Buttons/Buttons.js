@@ -2,14 +2,26 @@ import React from "react";
 import { ButtonContainer } from "../Containers/Containers";
 import { Button } from "./Button";
 
-const Buttons = ({ handleNumber, handleOperator, clear, operate }) => (
+const Buttons = ({
+  handleNumber,
+  handleOperator,
+  handleDecimal,
+  handlePercentage,
+  handleSignChange,
+  clear,
+  operate,
+}) => (
   <ButtonContainer>
-    <Button value={"C"} onClick={clear}>
+    <Button value={"C"} onClick={clear} className={"altButton"}>
       C
     </Button>
-    <Button>+/-</Button>
-    <Button>%</Button>
-    <Button value={"/"} onClick={handleOperator}>
+    <Button onClick={handleSignChange} className={"altButton"}>
+      +/-
+    </Button>
+    <Button onClick={handlePercentage} className={"altButton"}>
+      %
+    </Button>
+    <Button value={"/"} onClick={handleOperator} className={"operatorButton"}>
       ÷
     </Button>
     <Button value={7} onClick={handleNumber}>
@@ -21,7 +33,7 @@ const Buttons = ({ handleNumber, handleOperator, clear, operate }) => (
     <Button value={9} onClick={handleNumber}>
       9
     </Button>
-    <Button value={"*"} onClick={handleOperator}>
+    <Button value={"*"} onClick={handleOperator} className={"operatorButton"}>
       x
     </Button>
     <Button value={4} onClick={handleNumber}>
@@ -33,7 +45,7 @@ const Buttons = ({ handleNumber, handleOperator, clear, operate }) => (
     <Button value={6} onClick={handleNumber}>
       6
     </Button>
-    <Button value={"-"} onClick={handleOperator}>
+    <Button value={"-"} onClick={handleOperator} className={"operatorButton"}>
       -
     </Button>
     <Button value={1} onClick={handleNumber}>
@@ -46,14 +58,16 @@ const Buttons = ({ handleNumber, handleOperator, clear, operate }) => (
       3
     </Button>
 
-    <Button value={"+"} onClick={handleOperator}>
+    <Button value={"+"} onClick={handleOperator} className={"operatorButton"}>
       +
     </Button>
     <Button value={0} onClick={handleNumber} className={"zero"}>
       0
     </Button>
-    <Button>.</Button>
-    <Button value={"="} onClick={operate}>
+    <Button value={"."} onClick={handleDecimal}>
+      .
+    </Button>
+    <Button value={"="} onClick={operate} className={"operatorButton"}>
       =
     </Button>
   </ButtonContainer>

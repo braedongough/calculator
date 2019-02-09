@@ -24,6 +24,21 @@ class App extends Component {
     this.setState(prevState => ({ result: (prevState.result += value) }));
   };
 
+  handleDecimal = ({ target }) => {
+    const value = target.getAttribute("value");
+    if (!this.state.result.includes(".")) {
+      this.setState(prevState => ({ result: (prevState.result += value) }));
+    }
+  };
+
+  handlePercentage = () => {
+    this.setState(prevState => ({ result: prevState.result / 100 }));
+  };
+
+  handleSignChange = () => {
+    this.setState(prevState => ({ result: prevState.result / -1 }));
+  };
+
   handleOperator = ({ target }) => {
     const value = target.getAttribute("value");
     this.setState(prevState => ({
@@ -65,7 +80,10 @@ class App extends Component {
         </Display>
         <Buttons
           handleNumber={this.handleNumber}
+          handleDecimal={this.handleDecimal}
           handleOperator={this.handleOperator}
+          handlePercentage={this.handlePercentage}
+          handleSignChange={this.handleSignChange}
           operate={this.operate}
           clear={this.clear}
         />
