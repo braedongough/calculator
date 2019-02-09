@@ -16,7 +16,7 @@ const Buttons = ({
       C
     </Button>
     <Button onClick={handleSignChange} className={"altButton"}>
-      +/-
+      ±
     </Button>
     <Button onClick={handlePercentage} className={"altButton"}>
       %

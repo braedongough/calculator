@@ -56,7 +56,9 @@ class App extends Component {
     this.setState(prevState => {
       const { result, operator, operand } = prevState;
       return {
-        result: math.eval(operand + operator + result),
+        result: math
+          .format(math.eval(operand + operator + result), { precision: 14 })
+          .toString(),
         operator: "",
         operand: "",
       };
@@ -95,6 +97,11 @@ export default App;
 
 /* 
 todo: 
-  - add limit so that font size shrinks when more numbers are added 
-  - Center calculator in the middle of the page, check markdown previewer on how-to.   .
+- change borders to black
+todo: 
+-update favicon
+todo: 
+-format text so overflow is accounted for.
+todo:
+-fix focus highlight when button clicked
 */

@@ -12,7 +12,7 @@ export const Display = styled.div`
   align-items: center;
   padding: 0px 15px;
   padding-top: 25px;
-  overflow: hidden;
+  overflow: scroll;
   font-size: 45px;
   font-weight: 200;
   span.flash {
