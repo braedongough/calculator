@@ -2,55 +2,59 @@ import React from "react";
 import { ButtonContainer } from "../Containers/Containers";
 import { Button } from "./Button";
 
-const Buttons = props => (
+const Buttons = ({ handleNumber, handleOperator, clear, operate }) => (
   <ButtonContainer>
-    <Button label="1" value={1} onClick={props.handleClick}>
-      1
-    </Button>
-    <Button label="2" value={2} onClick={props.handleClick}>
-      2
-    </Button>
-    <Button label="3" value={3} onClick={props.handleClick}>
-      3
-    </Button>
-    <Button label="+" value={"+"} onClick={props.handleClick}>
-      +
-    </Button>
-    <Button label="4" value={4} onClick={props.handleClick}>
-      4
-    </Button>
-    <Button label="5" value={5} onClick={props.handleClick}>
-      5
-    </Button>
-    <Button label="6" value={6} onClick={props.handleClick}>
-      6
-    </Button>
-    <Button label="-" value={"-"} onClick={props.handleClick}>
-      -
-    </Button>
-    <Button label="7" value={4} onClick={props.handleClick}>
-      7
-    </Button>
-    <Button label="8" value={5} onClick={props.handleClick}>
-      8
-    </Button>
-    <Button label="9" value={6} onClick={props.handleClick}>
-      9
-    </Button>
-    <Button label="X" value={"*"} onClick={props.handleClick}>
-      x
-    </Button>
-    <Button label="C" value={"C"} onClick={props.handleClick}>
+    <Button value={"C"} onClick={clear}>
       C
     </Button>
-    <Button label="0" value={0} onClick={props.handleClick}>
+    <Button>+/-</Button>
+    <Button>%</Button>
+    <Button value={"/"} onClick={handleOperator}>
+      ÷
+    </Button>
+    <Button value={7} onClick={handleNumber}>
+      7
+    </Button>
+    <Button value={8} onClick={handleNumber}>
+      8
+    </Button>
+    <Button value={9} onClick={handleNumber}>
+      9
+    </Button>
+    <Button value={"*"} onClick={handleOperator}>
+      x
+    </Button>
+    <Button value={4} onClick={handleNumber}>
+      4
+    </Button>
+    <Button value={5} onClick={handleNumber}>
+      5
+    </Button>
+    <Button value={6} onClick={handleNumber}>
+      6
+    </Button>
+    <Button value={"-"} onClick={handleOperator}>
+      -
+    </Button>
+    <Button value={1} onClick={handleNumber}>
+      1
+    </Button>
+    <Button value={2} onClick={handleNumber}>
+      2
+    </Button>
+    <Button value={3} onClick={handleNumber}>
+      3
+    </Button>
+
+    <Button value={"+"} onClick={handleOperator}>
+      +
+    </Button>
+    <Button value={0} onClick={handleNumber} className={"zero"}>
       0
     </Button>
-    <Button label="=" value={"="} onClick={props.handleClick}>
+    <Button>.</Button>
+    <Button value={"="} onClick={operate}>
       =
-    </Button>
-    <Button label="÷" value={"/"} onClick={props.handleClick}>
-      ÷
     </Button>
   </ButtonContainer>
 );

@@ -5,28 +5,70 @@ import { Display } from "../Display/Display";
 import { CalculatorContainer } from "../Containers/Containers";
 
 class App extends Component {
-  state = { result: "" };
-  handleClick = e => {
-    const value = e.target.getAttribute("value");
-    if (value === "=") {
-      const operated = this.operate(this.state.result);
-      this.setState(() => ({ result: operated }));
-      return;
-    } else if (value === "C") {
-      this.setState(() => ({ result: [] }));
-      return;
-    }
+  state = {
+    result: "",
+    operator: "",
+    operand: "",
+    startCaptureSecondNumber: false,
+    flashOperand: "",
+  };
 
+  handleNumber = ({ target }) => {
+    const value = target.getAttribute("value");
+    if (this.state.startCaptureSecondNumber) {
+      this.setState({
+        result: "",
+        startCaptureSecondNumber: false,
+      });
+    }
     this.setState(prevState => ({ result: (prevState.result += value) }));
   };
-  operate(result) {
-    return math.eval(result);
-  }
+
+  handleOperator = ({ target }) => {
+    const value = target.getAttribute("value");
+    this.setState(prevState => ({
+      operator: value,
+      operand: prevState.result,
+      startCaptureSecondNumber: true,
+      flashOperand: "flash",
+    }));
+    setTimeout(() => {
+      this.setState({ flashOperand: "" });
+    }, 200);
+  };
+
+  operate = () => {
+    this.setState(prevState => {
+      const { result, operator, operand } = prevState;
+      return {
+        result: math.eval(operand + operator + result),
+        operator: "",
+        operand: "",
+      };
+    });
+  };
+
+  clear = () => {
+    this.setState({
+      result: "",
+      operator: "",
+      operand: "",
+    });
+  };
+
   render() {
+    const { flashOperand, result } = this.state;
     return (
       <CalculatorContainer>
-        <Display>{this.state.result}</Display>
-        <Buttons handleClick={this.handleClick} />
+        <Display>
+          <span className={flashOperand}>{result || 0}</span>
+        </Display>
+        <Buttons
+          handleNumber={this.handleNumber}
+          handleOperator={this.handleOperator}
+          operate={this.operate}
+          clear={this.clear}
+        />
       </CalculatorContainer>
     );
   }
@@ -35,7 +77,6 @@ export default App;
 
 /* 
 todo: 
-  - Add updated state so that operator isn't shown in display but is still used to make calculation similar to how the apple calc works. 
-  - add limit so that you can't input over 12 digits - make it flash red when limit is reached. 
+  - add limit so that font size shrinks when more numbers are added 
   - Center calculator in the middle of the page, check markdown previewer on how-to.   .
 */
